@@ -1,10 +1,12 @@
 <template>
     <v-container>
-        <v-row align="center">
+        <v-row>
             <!-- <v-row justify="space-around"> -->
             <!-- <v-switch v-model="valid" class="ma-4" label="Valid" readonly></v-switch>
             <v-switch v-model="lazy" class="ma-4" label="Lazy"></v-switch> -->
             <!-- </v-row> -->
+
+            <h2>Add a Question</h2>
             <v-form
             ref="form"
             v-model="valid"
@@ -13,11 +15,11 @@
             <v-text-field
                 v-model="question"
                 :rules="questionRules"
-                label="Add Question"
+                label="Add a question"
                 required
             ></v-text-field>
 
-            <v-file-input multiple label="Select file if any(Optional)"></v-file-input>
+            <v-file-input chips multiple label="Select file if any(Optional)"></v-file-input>
 
             <v-select
                 v-model="diff"
@@ -72,29 +74,31 @@
                 required
             ></v-checkbox>
 
-            <v-btn
-                :disabled="!valid"
-                color="success"
-                class="mr-4"
-                @click="validate"
-            >
-                Validate
-            </v-btn>
+            <div class="button-wrapper">
+                <v-btn
+                    :disabled="!valid"
+                    color="success"
+                    class="mr-4"
+                    @click="validate"
+                >
+                    Validate
+                </v-btn>
 
-            <v-btn
-                color="error"
-                class="mr-4"
-                @click="reset"
-            >
-                Reset Form
-            </v-btn>
+                <v-btn
+                    color="error"
+                    class="mr-4"
+                    @click="reset"
+                >
+                    Reset Form
+                </v-btn>
 
-            <v-btn
-                color="warning"
-                @click="resetValidation"
-            >
-                Reset Validation
-            </v-btn>
+                <v-btn
+                    color="warning"
+                    @click="resetValidation"
+                >
+                    Reset Validation
+                </v-btn>
+            </div>
             </v-form>
         </v-row>
     </v-container>
@@ -179,6 +183,25 @@ export default {
 .container{
     min-height: 100vh;
 }
+
+form{
+    padding: 0 20px 20px 20px;
+    /* max-width: 500px; */
+}
+
+h2{
+    padding: 20px;
+}
+
+.row{
+    flex-direction: column;
+}
+
+/* .button-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
 
 
 </style>
